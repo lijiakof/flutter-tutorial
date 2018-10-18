@@ -116,13 +116,30 @@ assert(lineCount == null);
 ```
 
 #### Final 和 const
+如果你不打算更改变量，可以使用 `final` 或者 `const` 来定义变量。这样变量只能设置一次值，const 变量是编译时常量。下面是创建和初始化一个常量：
 
+```
+final name = 'Jay';
+final String nikname = 'Lily';
+```
 
+我们不能够改变一个常量：
+
+```
+name = 'Lee'; // Error: a final variable can only be set once.
+```
+
+如果你希望编译时定义常量，请使用 const 来定义变量。如果常量是类级别，请使用 `static const`。当你要设置一个编译时常量，你可以设置一个数字或者字符串、一个常量、甚至是对常量进行运算的结果：
+
+```
+const bar = 1000000; // Unit of pressure (dynes/cm2)
+const double atm = 1.01325 * bar; // Standard atmosphere
+```
+
+更多内容：https://www.dartlang.org/guides/language/language-tour#final-and-const
 
 ### 数据类型
-Dart 中所有的数据都是对象，包括数字、函数等，它们都继承于 Object，并且默认值都是 null（包括数字）
-
-Dart 内置数据类型
+Dart 中所有的数据都是对象，包括数字、函数等，它们都继承于 Object，并且默认值都是 null（包括数字）。以下是 Dart 内置数据类型：
 
 * number
     * int
@@ -133,6 +150,38 @@ Dart 内置数据类型
 * map
 * run
 * symbol
+
+### 函数
+Dart 是面向对象语言，甚至是函数也是一个对象，它的类型是 `Function`。这意味着函数可以作为一个参数传递给其它函数。你也可以通过 Dart 类型来实例化一个函数。
+
+下面是创建函数的例子：
+
+```
+bool isNoble(int atomicNumber) {
+    return _nobleGases[atomicNumber] != null;
+}
+```
+
+Dart 推荐为公共接口提供类型，但是如果省略类型仍然有效：
+
+```
+isNoble(atomicNumber) {
+  return _nobleGases[atomicNumber] != null;
+}
+```
+
+如果函数只有一个表达式，我们可以这样简写：
+
+```
+bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
+```
+
+`=> expr` 符号是 `{ return expr; }` 简写。
+
+
+
+
+### 运算
 
 https://www.dartlang.org/guides/language/language-tour
 
