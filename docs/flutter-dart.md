@@ -9,8 +9,10 @@
     * 数据类型
 * 函数
 * 运算
+* 流程控制
 * 类&对象
 * 泛型
+* 异步的支持
 
 ## 安装
 
@@ -151,9 +153,9 @@ Dart 中所有的数据都是对象，包括数字、函数等，它们都继承
 * run
 * symbol
 
-### 函数
+## 函数
 Dart 是面向对象语言，甚至是函数也是一个对象，它的类型是 `Function`。这意味着函数可以作为一个参数传递给其它函数。你也可以通过 Dart 类型来实例化一个函数。
-
+ 
 下面是创建函数的例子：
 
 ```
@@ -178,10 +180,116 @@ bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 
 `=> expr` 符号是 `{ return expr; }` 简写。
 
+### 可选参数
+
+#### 可选的命名参数
+当调用函数是，我们可以通过 `paramName: value` 来指定参数名称，例如：
+
+```
+enableFlags(bold: true, hidden: false);
+```
+
+定义函数是，也可以用 `{param1, param2, …}` 来指定参数名称：
+
+```
+/// Sets the [bold] and [hidden] flags ...
+void enableFlags({bool bold, bool hidden}) {...}
+```
+
+#### 可选位置参数
+
+#### 参数默认值
+
+### main() 函数
+每一个引用必须有一个顶级 `main()` 函数，作为程序的入口。
+
+### 匿名函数
+
+```
+var list = ['apples', 'bananas', 'oranges'];
+list.forEach((item) {
+    print('${list.indexOf(item)}: $item');
+});
+```
+
+### 语法作用域
+
+```
+bool topLevel = true;
+
+void main() {
+    var insideMain = true;
+
+    void myFunction() {
+        var insideFunction = true;
+
+        void nestedFunction() {
+            var insideNestedFunction = true;
+
+            assert(topLevel);
+            assert(insideMain);
+            assert(insideFunction);
+            assert(insideNestedFunction);
+        }
+    }
+}
+```
+
+### 闭包
+
+```
+/// Returns a function that adds [addBy] to the
+/// function's argument.
+Function makeAdder(num addBy) {
+    return (num i) => addBy + i;
+}
+
+void main() {
+    // Create a function that adds 2.
+    var add2 = makeAdder(2);
+
+    // Create a function that adds 4.
+    var add4 = makeAdder(4);
+
+    assert(add2(3) == 5);
+    assert(add4(3) == 7);
+}
+```
+
+### 返回值
 
 
+## 运算
+参考：https://www.dartlang.org/guides/language/language-tour#operators
 
-### 运算
+## 流程控制
+
+* if and else
+* for loops
+* while and do-while loops
+* break and continue
+* switch and case
+* assert
+
+以上条件语句基本上很多语言都有了，就不用一一举例了。但是要介绍一下 assert，它就像我们单元测试的断言一样，通过它可以判断传入的条件语句的真与假：
+
+```
+// Make sure the variable has a non-null value.
+assert(text != null);
+
+// Make sure the value is less than 100.
+assert(number < 100);
+
+// Make sure this is an https URL.
+assert(urlString.startsWith('https'));
+```
+
+## 类&对象
+
+## 泛型
+
+## 异步的支持
+
 
 https://www.dartlang.org/guides/language/language-tour
 
