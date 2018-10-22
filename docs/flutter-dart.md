@@ -285,6 +285,87 @@ assert(urlString.startsWith('https'));
 ```
 
 ## 类&对象
+Dart 是面向对象的语言，具有类和 `mixin-based` 的继承。每个对象都是一个类的实例，所有的类都继承于 `Object`。基于 `mixin-based` 的继承意味着，每个类只会有一个超类，但是类可以可以在多个类层次结构中重用。
+
+### 类的成员
+对象中类的成员包括函数和数据。当你调用一个函数时时，可以通过一个对象来调用，这种方式可以访问对象的函数和数据。
+
+使用 `.` 来访问对象实例的数据和函数：
+
+```
+var p = Point(2, 2);
+
+// Set the value of the instance variable y.
+p.y = 3;
+
+// Get the value of y.
+assert(p.y == 3);
+
+// Invoke distanceTo() on p.
+num distance = p.distanceTo(Point(4, 4));
+```
+
+使用 `?.` 代替 `.` 可以防止运算结果为 null 的异常。
+
+```
+// If p is non-null, set its y value to 4.
+p?.y = 4;
+```
+
+### 构造函数
+你可以通过构造函数来创建一个对象。构造函数可以通过 `ClassName` 或者 `ClassName.identifier` 来命名。例如：
+
+```
+var p1 = Point(2, 2);
+var p2 = Point.fromJson({x: 1, y: 2});
+```
+
+通过 `new` 关键词也可以来创建一个对象：
+
+```
+var p1 = new Point(2, 2);
+var p2 = new Point.fromJson({'x': 1, 'y': 2});
+```
+
+### 获取对象的类型
+在运行时可以通过 Object 的 `runtimeType` 属性来获取对象的类型：
+
+```
+print('The type of a is ${a.runtimeType}');
+```
+
+到此为止，你已经知道如何使用类。接下来的部分讲告诉你如何实现类。
+
+### 实例变量
+下面是如何定义实例的变量：
+
+```
+class Point {
+  num x; // Declare instance variable x, initially null.
+  num y; // Declare y, initially null.
+  num z = 0; // Declare z, initially 0.
+}
+```
+
+所有的未初始化的实例的变量为 `null`。
+
+所有实例变量都会隐式生成 `getter` 和 `setter` 函数：
+
+```
+class Point {
+    num x;
+    num y;
+}
+
+void main() {
+    var point = Point();
+    point.x = 4; // Use the setter method for x.
+    assert(point.x == 4); // Use the getter method for x.
+    assert(point.y == null); // Values default to null.
+}
+```
+
+### 构造函数
 
 ## 泛型
 
