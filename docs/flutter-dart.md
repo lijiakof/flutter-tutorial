@@ -366,6 +366,36 @@ void main() {
 ```
 
 ### 构造函数
+我们可以通过创建一个与类名相同的函数来定义一个构造函数。
+
+```
+class Point {
+    num x, y;
+
+    Point(num x, num y) {
+        // There's a better way to do this, stay tuned.
+        this.x = x;
+        this.y = y;
+    }
+}
+```
+
+`this` 关键词是当前实例的引用。
+
+将构造函数的参数赋值给实例是一个常见的操作，Dart 可以简单的操作：
+
+```
+class Point {
+    num x, y;
+
+    Point(this.x, this.y);
+}
+```
+
+如果你没有定义构造函数，会有默认一个私有的构造函数。默认构造函数没有参数，并且在超类中调用无参数构造函数。
+
+### 类的方法
+
 
 ## 泛型
 
