@@ -2,7 +2,7 @@
 
 * 安装
 * VS Code 编辑器配置
-* Hello World
+* 体验 Flutter
 
 ## 安装
 
@@ -88,7 +88,7 @@ export PATH=PATH_TO_FLUTTER_SDK/flutter/bin:$PATH
     * 输入 `doctor`, 选择 `Flutter: Run Flutter Doctor`
     * 查看输出
 
-## Hello World
+## 体验 Flutter
 * 创建 App
     * 启动 VS Code
     * View > Command Palette
