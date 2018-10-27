@@ -98,7 +98,7 @@ export PATH=PATH_TO_FLUTTER_SDK/flutter/bin:$PATH
     * 等待项目创建成功
 * 启动 App
     * 找到 VS Code 状态栏
-    * 
+    * 在 `Device Selector` 的地方选择一个设备
     * Debug > Start Debugging Or F5
     * 等待 App 启动
 * 体验热加载
