@@ -84,7 +84,7 @@ export PATH=PATH_TO_FLUTTER_SDK/flutter/bin:$PATH
 * 安装 VS Code
 * 安装 Flutter 插件
 * 验证安装
-    * View>Command Palette…
+    * View > Command Palette…
     * 输入 `doctor`, 选择 `Flutter: Run Flutter Doctor`
     * 查看输出
 
