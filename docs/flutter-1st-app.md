@@ -4,8 +4,6 @@
 * 使用外部包
 * 增加一个有状态部件
 * 创建一个无限滚动列表
-* 导航到一个新页面
-* 修改主题
 
 ## 创建 Flutter App
 
@@ -252,16 +250,16 @@ class RandomWordsState extends State<RandomWords> {
 
 ```
 class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Startup Name Generator',
-      home: RandomWords(),
-    );
-  }
+    @override
+    Widget build(BuildContext context) {
+            return MaterialApp(
+            title: 'Startup Name Generator',
+            home: RandomWords(),
+        );
+    }
 }
 ```
 
 * 代码：[lib/main.dart](https://raw.githubusercontent.com/chalin/flutter-codelabs/master/startup_namer/4_end_of_infinite_list/lib/main.dart)
 
-https://flutter.io/codelabs/
+参考：https://flutter.io/codelabs/
