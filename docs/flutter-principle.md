@@ -2,7 +2,6 @@
 
 * 绘图基本原理（OpenGL）
 * Flutter 框架设计
-* Dart 语言
 * Flutter 布局机制
 * Flutter 渲染管线
 * Flutter 引擎
@@ -10,7 +9,7 @@
 * Flutter Vs ReactNative
 
 ## 绘图基本原理
-我们先回顾一下计算机屏幕的绘图原理过程：
+我们先回顾一下计算机在屏幕上的绘图原理过程：
 
 ![绘图](../resources/computer-drawing.png)
 
@@ -21,9 +20,25 @@
 
 *帧缓冲区：简称帧缓存或显存，它是屏幕所显示画面的一个直接映象，又称为位映射图(Bit Map)或光栅。帧缓存的每一存储单元对应屏幕上的一个像素，整个帧缓存对应一帧图像。*
 
-当然，Android、iOS 的 UI 渲染过程也是如此，Flutter 也是如此，在整个 Flutter 架构中，
+当然，Android、iOS 的 UI 渲染过程是如此，Flutter 也是如此，在整个 Flutter 架构中，Flutter 只关心向 GPU 提供显示数据，todo...
 
+![Graphics Pipeline](../resources/graphics-pipeline.png)
 
+## Flutter 框架设计
+Flutter 整体框架是由 Dart 语言来实现的，它的层次非常清晰，每层（模块）的职责也相对单一，整个结构让 Flutter 框架在使用上来说更加容易和学习。框架的底层是 Flutter 引擎，它负责绘图、动画、网络、Dart 运行时等功能，是由 C++ 实现的，我们会在接下来的章节中介绍。
+
+![Graphics Pipeline](../resources/architecture.png)
+
+* Framework
+    * Meterial, Cupertino
+    * Widgets
+    * Rendering
+    * Animation, Painting, Gestures
+    * Foundation
+* Engine
+    * Skia
+    * Dart
+    * Text
 
 ## 参考：
 
@@ -33,3 +48,4 @@
 * https://github.com/flutter/engine/wiki
 * https://blog.csdn.net/lanchunhui/article/details/52857160
 * http://www.twinklingstar.cn/2015/1532/introduce-to-opengl/
+* https://www.brainmobi.com/blog/flutter-the-new-standard-in-mobile-app-development/
