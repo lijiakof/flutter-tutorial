@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import './page2.dart';
 
 class Page1 extends StatefulWidget {
@@ -32,6 +33,20 @@ class _Page1 extends State<Page1> {
                   builder: (context) => Page2(title: 'Hello')
                 )
               );
+            },
+          ),
+          RaisedButton(
+            child: Text('Navigate to Page2 & return'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  //builder: (context) => Page2()
+                  builder: (context) => Page2(title: 'Return'),
+                )
+              ).then((value) {
+                print(value);
+              });
             },
           ),
           RaisedButton(
