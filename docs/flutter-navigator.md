@@ -8,7 +8,7 @@ Flutter 页面之间的跳转和传值，和大多数前端框架（Vue、React 
 * 总结
 
 ## 导航到新页面
-我们可以通过 Navigator.push 来完成页面之间的跳转：
+我们可以通过 `Navigator.push` 来完成页面之间的跳转：
 
 ```
 // main.dart
@@ -22,7 +22,7 @@ onPressed() {
 }
 ```
 
-如果要返回我们可以通过 Navigator.pop 来完成：
+如果要返回我们可以通过 `Navigator.pop` 来完成：
 
 ```
 // page1.dart
@@ -47,7 +47,7 @@ onPressed() {
 ```
 
 ## 将值返回到前面的页面
-通过 Navigator.pop 可以将当前页面的参数，返回给它前面页面：
+通过 `Navigator.pop` 可以将当前页面的参数，返回给它前面页面：
 
 ```
 // page2.dart
@@ -85,7 +85,7 @@ MaterialApp(
 )
 ```
 
-然后通过 Navigator.pushNamed 来完成页面之间的跳转：
+然后通过 `Navigator.pushNamed` 来完成页面之间的跳转：
 
 ```
 // page3.dart
