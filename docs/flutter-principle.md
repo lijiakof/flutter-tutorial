@@ -5,6 +5,7 @@
 * Flutter 布局机制
 * Flutter 渲染
 * Flutter 引擎
+* Flutter 工程结构
 * Flutter Vs WebView
 * Flutter Vs ReactNative
 
@@ -50,11 +51,11 @@ Flutter 渲染层
 
 ## 参考：
 
-* https://tech.meituan.com/waimai-flutter-practice.html
+* https://www.jianshu.com/p/e6cd8584fdbb
 * https://zhuanlan.zhihu.com/p/37438551
 * https://zhuanlan.zhihu.com/p/36861174
 * https://github.com/flutter/engine/wiki
 * https://blog.csdn.net/lanchunhui/article/details/52857160
 * https://blog.csdn.net/chichengjunma/article/details/82078241
-* http://www.twinklingstar.cn/2015/1532/introduce-to-opengl/
+* OpenGL：http://www.twinklingstar.cn/2015/1532/introduce-to-opengl/
 * https://www.brainmobi.com/blog/flutter-the-new-standard-in-mobile-app-development/

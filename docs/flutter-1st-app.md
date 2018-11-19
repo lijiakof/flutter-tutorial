@@ -144,13 +144,13 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
             title: 'Welcome to Flutter',
             home: Scaffold(
-            appBar: AppBar(
-                title: Text('Welcome to Flutter'),
-            ),
-            body: Center(
-                //child: Text(wordPair.asPascalCase), // Change the highlighted text to...
-                child: RandomWords(), // ... this highlighted text
-            ),
+                appBar: AppBar(
+                    title: Text('Welcome to Flutter'),
+                ),
+                body: Center(
+                    //child: Text(wordPair.asPascalCase), // Change the highlighted text to...
+                    child: RandomWords(), // ... this highlighted text
+                ),
             ),
         );
     }
