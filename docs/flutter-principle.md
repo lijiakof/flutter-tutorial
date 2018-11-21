@@ -114,7 +114,7 @@ ReactNative 在 WebView 的方案上更进一步，借助 App 内置 Javascrpit 
 
 ![Flutter vs Reactnative](../resources/flutter-reactnative.png)
 
-这种形势的跨平台并非真正意义的跨平台，如果要做 UI 或者新的组件时，还是需要在 iOS 和 Android 两端上都有对应接口的实现才行。由于有 JavaScript 桥接这一层，在性能上还是稍差于纯 Native 开发。但是即便于此，它低廉的学习成本，与 Web 前端开发方式一样有着直观易懂，以及极高的开发效率，得到了开发人员（尤其是 Web 前端）的青睐。
+这种形势的跨平台并非真正意义的跨平台，如果要做 UI 或者新的组件时，还是需要在 iOS 和 Android 两端上都有对应接口的实现才行。由于有 JavaScript 桥接这一层，在性能上还是稍差于纯 Native 开发。但是即便于此，它低廉的学习成本，与 Web 前端开发方式一样有着直观易懂，以及极高的开发效率，得到了开发人员（尤其是 Web 前端）的青睐。
 
 ### Flutter
 Flutter 可以说是跨平台解决方案的再一次进化，它直接借助 OpenGL 通过 GPU 来绘制 UI，并且通过 C++ 直接和系统层交互。
