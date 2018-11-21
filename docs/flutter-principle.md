@@ -7,7 +7,7 @@
 * Flutter 渲染
 * Flutter 引擎
 * Flutter 工程结构简介
-* Flutter vs WebView vs Reactnative
+* Flutter vs WebView vs ReactNative
 
 ## 绘图基本原理
 我们先回顾一下计算机在屏幕上的绘图原理过程：
@@ -100,7 +100,7 @@ Flutter 引擎是由 C++ 实现的，主要包含：Skia、Dart和Text 三大部
 * pubspec.lock：项目所有依赖，一颗依赖树
 * pubspec.yaml：项目主依赖配置
 
-## Flutter vs WebView vs Reactnative
+## Flutter vs WebView vs ReactNative
 
 ### WebView
 最早的跨平台解决方案，是借助 App 内部的 WebView 组件来实现的，也就是 App 内部的浏览器。但是由于它的性能、兼容性、稳定性都表现不够出色，并且在联调上有太多的障碍，导致这个技术已经不再流行。
@@ -109,7 +109,7 @@ Flutter 引擎是由 C++ 实现的，主要包含：Skia、Dart和Text 三大部
 
 说白了，其实它仅仅只是 Web 的开发，UI 和业务逻辑都是 Web 的部分，如果要调取 Native 的硬件设备，需要 Native 拦截特殊的 Http 请求从而获取硬件设备信息。当然它有自己的好处，更新快，有问题随时发布。
 
-### Reactnative
+### ReactNative
 ReactNative 在 WebView 的方案上更进一步，借助 App 内置 Javascrpit 引擎，将 JavaScript 和 Native 进行桥接，直接通过 JavaScript 来调取 Native 的相关组件，在性能上比 WebView 要更胜一筹。
 
 ![Flutter vs Reactnative](../resources/flutter-reactnative.png)
