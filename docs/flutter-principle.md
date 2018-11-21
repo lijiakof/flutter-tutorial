@@ -7,8 +7,7 @@
 * Flutter 渲染
 * Flutter 引擎
 * Flutter 工程结构简介
-* Flutter Vs WebView
-* Flutter Vs ReactNative
+* Flutter vs WebView vs Reactnative
 
 ## 绘图基本原理
 我们先回顾一下计算机在屏幕上的绘图原理过程：
@@ -101,9 +100,28 @@ Flutter 引擎是由 C++ 实现的，主要包含：Skia、Dart和Text 三大部
 * pubspec.lock：项目所有依赖，一颗依赖树
 * pubspec.yaml：项目主依赖配置
 
-## Flutter Vs WebView
+## Flutter vs WebView vs Reactnative
 
-## Flutter Vs ReactNative
+### WebView
+最早的跨平台解决方案，是借助 App 内部的 WebView 组件来实现的，也就是 App 内部的浏览器。但是由于它的性能、兼容性、稳定性都表现不够出色，并且在联调上有太多的障碍，导致这个技术已经不再流行。
+
+![Flutter vs Webview](../resources/flutter-webview.png)
+
+说白了，其实它仅仅只是 Web 的开发，UI 和业务逻辑都是 Web 的部分，如果要调取 Native 的硬件设备，需要 Native 拦截特殊的 Http 请求从而获取硬件设备信息。当然它有自己的好处，更新快，有问题随时发布。
+
+### Reactnative
+ReactNative 在 WebView 的方案上更进一步，借助 App 内置 Javascrpit 引擎，将 JavaScript 和 Native 进行桥接，直接通过 JavaScript 来调取 Native 的相关组件，在性能上比 WebView 要更胜一筹。
+
+![Flutter vs Reactnative](../resources/flutter-reactnative.png)
+
+这种形势的跨平台并非真正意义的跨平台，如果要做 UI 或者新的组件时，还是需要在 iOS 和 Android 两端上都有对应接口的实现才行。由于有 JavaScript 桥接这一层，在性能上还是稍差于纯 Native 开发。但是即便于此，它低廉的学习成本，与 Web 前端开发方式一样有着直观易懂，以及极高的开发效率，得到了开发人员（尤其是 Web 前端）的青睐。
+
+### Flutter
+Flutter 可以说是跨平台解决方案的再一次进化，它直接借助 OpenGL 通过 GPU 来绘制 UI，并且通过 C++ 直接和系统层交互。
+
+![Flutter](../resources/flutter-pattern.png)
+
+Flutter 可以说在性能更加的高，在跨平台解决方案上更加彻底，但是它的学习曲线相对陡峭，并且刚刚起步，生态还为形成，不过潜力还是非常大。
 
 ## 参考：
 
