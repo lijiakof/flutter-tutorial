@@ -20,7 +20,7 @@ Flutter 提供了大量的 Widget，种类繁多，就是布局组件就多达 3
     * Text & Image & Icon
     * ListView & ListTile
     * Buttons
-    * Scaffold & Drawer & PopupMenuButton
+    * Scaffold & Appbar & Drawer & PopupMenuButton
 * Forms and Inputs: 
     * Form
     * TextFormField & TextField 
@@ -50,6 +50,25 @@ Column(
 ### ListView & ListTile
 ListView & ListTile 这类组件，主要是解决大量列表数据的展示和交互。ListView 为列表的主体部分，它可以绑定数据集合，并且滚动时可以和远程数据进行交互，当然也可以对列表项的数据进行不同的布局展示。ListTile 为列表项的布局，它是基于 Material Design 设计出来的一种特殊布局的部件。
 
+```
+
+List<String> listData = ['a', 'b', 'c', 'd'];
+
+//...
+
+ListView.builder(
+    itemCount: 4,
+    itemBuilder: (context, index) {
+        String item = listData[index];
+
+        return ListTile(
+            title: Text(item),
+            subTitle: Text(index)
+        );
+    }
+);
+```
+
 ### Buttons
 在 Flutter 部件中有各种不同风格的按钮，例如：IconButton、FlatButton、RaisedButton、RawMaterialButton 等等，其实它们仅仅是风格不同，用处没有太大的差别：
 
@@ -74,11 +93,48 @@ Column(
 
 **他们在初始化是，有一个必须要初始化的属性 `onPressed`**
 
-### Scaffold & Drawer & PopupMenuButton
-这一组部件也是基于 Material Design 设计出来的，它们主要解决 App 的导航、辅助功能等问题，当然它也会帮你适配页面在不同设备下的表现。
+### Scaffold & Appbar & Drawer & PopupMenuButton
+这一组部件也是基于 Material Design 设计出来的，它们主要解决 App 的导航、辅助功能等问题，当然它也会帮你适配页面在不同设备下的表现。下面的代码中，会出现上述所有组件，让我们分享一下代码：
 
+
+```
+Scaffold(
+    appBar: Appbar(
+        title: Text('Title'),
+        actions: <Widget> [
+            PopupMenuButton(
+                itemBuilder: (context) {
+                    return [
+                        PopupMenuItem(
+                            value: '',
+                            child: Text('Item1')
+                        )
+                    ]
+                }
+            )
+        ]
+    ),
+    drawer: Drawer(
+        child: Column(),
+    ),
+    body: Container(),
+)
+```
+
+* Scaffold：Material Design 布局结构的基本实现
+    * appbar: Appbar：引用程序栏
+        * title：标题
+        * actions：操作部件
+            * PopupMenuButton：弹出菜单按钮
+                * PopupMenuItem：菜单项
+    * drawer: Drawer：侧边抽屉导航
+    * body：应用程序主体
+
+![Widgets-Appbar](../resources/flutter-widgets-appbar.png)
 
 ## 表单部件（Forms and Inputs）
+我们通过表单来收集用户填写的相关信息，和 Web 中的表单类似，Flutter 提供了表单中常用的文本输入、单选、多选和开关等部件，并且它也提供了基本的表单校验的功能，以及满足我们通常的业务。
+
 
 
 ## 布局部件（Layout）
