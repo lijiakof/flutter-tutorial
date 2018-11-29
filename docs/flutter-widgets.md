@@ -1,9 +1,10 @@
-# Flutter 部件简介
-Flutter 提供了大量的 Widget，种类繁多，就是布局组件就多达 30 个，我们就不一一介绍，只介绍比较常用的一些。在介绍组件之前，我们先了解一下 Flutter 部件的不同种类，在 Flutter 的官方文档中，对所有组件的分类比较混乱，不同大类之间有组件有很多交叉现象，例如：Container 既属于基础部件又属于布局类型的部件；Image 部件同时在基础类型和 Material 类型中，并且还专门为资源类型的部件（Icon、RowImage 等）定义了一个类别。个人感觉它的分类比较混乱，因此我试着重新梳理一下不同的 Flutter 部件类型，以便于学习使用。
+# Flutter 常用部件简介
+Flutter 提供了大量的 Widget，种类繁多，就是布局组件就多达 30 个，我们就不一一介绍，只介绍比较常用的一些。在介绍组件之前，我们先了解一下 Flutter 部件的不同种类，在 Flutter 的官方文档中，对所有组件的分类比较混乱，不同大类之间有组件有很多交叉现象，例如：Container 既属于基础部件又属于布局类型的部件；Image 部件同时在基础类型和 Material 类型中，并且还专门为资源类型的部件（Icon、RowImage 等）定义了一个类别。个人感觉它的分类比较混乱，因此我试着重新梳理一下 Flutter 的常用部件类型，以便于学习使用。
 
 * Basics
 * Forms and Inputs
 * Layout
+* Dialogs and Alerts
 * Interaction Models
 * Animation and Motion
 * Painting and effects
@@ -25,11 +26,16 @@ Flutter 提供了大量的 Widget，种类繁多，就是布局组件就多达 3
     * Form
     * TextFormField & TextField 
     * Checkbox & Radio & Switch
+    * Date & Time Pickers
 * Layout: 
-    * Container & Column & Row & Stack & Positioned
-* Interaction Models: 
-    * BottomSheet 
+    * Container & Padding & Center & Positioned
+    * Column & Row & Stack & GridView
+* Dialogs and Alerts
     * AlertDialog
+    * SnackBar
+    * BottomSheet
+* Interaction Models: 
+    * Dismissible 
 
 ## 常用基础部件（Basics）
 
@@ -63,7 +69,7 @@ ListView.builder(
 
         return ListTile(
             title: Text(item),
-            subTitle: Text(index)
+            subtitle: Text(index.toString())
         );
     }
 );
@@ -109,7 +115,7 @@ Scaffold(
                             value: '',
                             child: Text('Item1')
                         )
-                    ]
+                    ];
                 }
             )
         ]
@@ -135,7 +141,138 @@ Scaffold(
 ## 表单部件（Forms and Inputs）
 我们通过表单来收集用户填写的相关信息，和 Web 中的表单类似，Flutter 提供了表单中常用的文本输入、单选、多选和开关等部件，并且它也提供了基本的表单校验的功能，以及满足我们通常的业务。
 
-
+```
+Form(
+    key: _formKey,
+    child: Column(
+        children: <Widget>[
+            TextFormField(
+                validator: (value) {
+                    if(value.isEmpty) {
+                    return 'Please enter some text';
+                    }
+                },
+            ),
+            Checkbox(
+                value: false,
+                onChanged: (value) { },
+            ),
+            Radio(
+                value: false,
+                groupValue: 0,
+                onChanged: (value) { },
+            ),
+            Switch(
+                value: false,
+                onChanged: (value) {},
+            ),
+            RaisedButton(
+                child: Text('Submit'),
+                color: Colors.black,
+                textColor: Colors.white,
+                onPressed: (){
+                if(_formKey.currentState.validate()) {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text('OK'),
+                        ));
+                    }
+                },
+            )
+        ],
+    ),
+);
+```
 
 ## 布局部件（Layout）
+布局部件在 Flutter 中多大 30 个，个人对这种复杂繁多的设计并不是非常满意（或许它有自己的好处），但是对于开发人员来说非常不友好。在布局部件中 Flutter 分两大类：一类是单个子元素的布局部件；另一类是多个子元素的布局部件。我们简单介绍几个较为常用的部件：
 
+* Single-child layout widgets
+    * Container：
+    * Padding：
+    * Center：
+    * Positioned：
+* Multi-child layout widgets
+    * Column：
+    * Row：
+    * Stack：
+    * GridView：
+
+### Container
+
+
+```
+
+```
+
+## 提醒弹出框部件（Dialogs and Alerts）
+提醒和弹出框部件，App 相比起 Web 更加的丰富多样，Web 原生提供的也比较少，我们看看 App 中比较常用的几个：
+
+* AlertDialog
+* SnackBar
+* BottomSheet
+
+### AlertDialog
+AlertDialog 类似于浏览器中的 alert，只不过它可以自定义一些按钮来做不同的事情：
+
+```
+FlatButton(
+    child: Text('Show Dialog'),
+    onPressed: () {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                title: Text('Title2'),
+                content: Text('Content2'),
+                actions: <Widget>[
+                    FlatButton(
+                        child: Text('OK'),
+                        onPressed: () {
+                            // do something
+                        }
+                    )
+                ]
+            )
+        );
+    },
+)
+```
+
+### SnackBar
+SnackBar 是类似于很多 UI 框架中的提醒框，它属于非阻断性的提醒：
+
+```
+RaisedButton(
+    child: Text('Show SnackBar'),
+    color: Colors.black,
+    textColor: Colors.white,
+    onPressed: (){
+        Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('Hello!'),
+        ));
+    },
+)
+```
+
+### BottomSheet
+BottomSheet 是从屏幕底部弹出来的页面，你可以通过它来做一些类似与 Select 部件的功能，当然它内部的内容是可以自定义的：
+
+```
+RaisedButton(
+    child: Text('Show Bottom Sheet'),
+    color: Colors.black,
+    textColor: Colors.white,
+    onPressed: () {
+        showBottomSheet(
+            context: context,
+            builder: (context) {
+                return Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text('BottomSheet'),
+                );
+            }
+        );
+    },
+)
+```
+
+## 交互模型（Interaction Models）
