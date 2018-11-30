@@ -425,5 +425,12 @@ RaisedButton(
 )
 ```
 
+## 代码：
+* [Basics](../demo/widgets/lib/widget-basics.dart)
+* [Forms and Inputs](../demo/widgets/lib/widget-form.dart)
+* [Layout](../demo/widgets/lib/widget-layout.dart)
+* [GridView](../demo/widgets/lib/widget-grid.dart)
+* [Dialogs and Alerts](../demo/widgets/lib/widget-dialogs.dart)
+
 ## 总结
-Interaction Models、Animation and Motion、Painting and effects 这些都属于比较高级的部件，我们在未来文章中再介绍，
+Interaction Models、Animation and Motion、Painting and effects 这些都属于比较高级的部件，我们在未来文章中再做介绍。回顾 Flutter 如此繁多的部件，再加上它的有状态部件和无状态部件之分，学习成本相对来说比较高，每一种部件还有这不同的功能属性，这种设计的确讲究软件设计的职责单一，但是在复杂的 UI 场景会导致大量的代码嵌套，代码的维护成本也会随之上升，在 Web 的 Table 布局时代就出现过这样的灾难。作为 Web 工程师，可能对 Flutter 这样的设计非常抱怨，HTML 和 CSS 将组件和样式分离开来，从学习的角度上看所有组件有着它自己的功能，而样式只是组件的附加值，从某种角度上来说这是两个是解藕的，但是 Flutter 部件的学习过程中需要去了解各个部件自己的长相如何设置，在这一点 Web 学习的复杂成本会降低。另外将样式分离开来后，代码嵌套也会随之减少，同样是 DIV 我们可以给它赋予布局、边框、背景、阴影、边距、剪切等样式，但是 Flutter 部件要实现这些功能需要嵌套多个部件才能完成。个人认为 Flutter 在这方面需要继续改进，已迎合现在互联网工程师的口味，这样才能推广开来。
