@@ -30,12 +30,13 @@ Flutter 提供了大量的 Widget，种类繁多，就是布局组件就多达 3
 * Layout: 
     * Container & Padding & Center & Positioned
     * Column & Row & Stack & GridView
-* Dialogs and Alerts
+* Dialogs and Alerts:
     * AlertDialog
     * SnackBar
     * BottomSheet
-* Interaction Models: 
-    * Dismissible 
+* Interaction Models
+* Animation and Motion
+* Painting and effects
 
 ## 常用基础部件（Basics）
 
@@ -184,7 +185,7 @@ Form(
 ```
 
 ## 布局部件（Layout）
-布局部件在 Flutter 中多大 30 个，个人对这种复杂繁多的设计并不是非常满意（或许它有自己的好处），但是对于开发人员来说非常不友好。在布局部件中 Flutter 分两大类：一类是单个子元素的布局部件；另一类是多个子元素的布局部件。我们简单介绍几个较为常用的部件：
+布局部件在 Flutter 中多达 30 个，个人对这种复杂繁多的设计并不是非常满意（或许它有自己的好处），但是对于开发人员来说非常不友好。在布局部件中 Flutter 分两大类：一类是单个子元素的布局部件；另一类是多个子元素的布局部件。我们简单介绍几个较为常用的部件：
 
 * Single-child layout widgets
     * Container：
@@ -198,10 +199,159 @@ Form(
     * GridView：
 
 ### Container
-
+Container 类似于 Web 中的 `<div>`，我们可以给它设置 `height`、`width`、`padding`、`margin` 等属性：
 
 ```
+Container(
+    child: Text('Container'),
+    padding: EdgeInsets.all(10),
+    margin: EdgeInsets.all(30),
+    height: 250,
+    width: 200,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+        color: Colors.red,
+        border: Border.all(
+            width: 3, 
+            color: Colors.blue
+        ),
+        borderRadius: BorderRadius.all(
+            Radius.circular(20)
+        ),
+        image: DecorationImage(
+            image: NetworkImage('https://metaimg.baichanghui.com/appdownload.jpg')
+        )
+    ),
+    transform: Matrix4.rotationZ(-0.1),
+)
+```
 
+### Padding
+Padding 可以用来给部件设置内边距，搞不懂 Flutter 的设计思想：
+
+```
+Padding(
+    padding: EdgeInsets.all(20),
+    child: Container(
+        child: Text('Padding'),
+        color: Colors.green,
+    ),
+)
+```
+
+### Center
+What?
+
+```
+Center(
+    child: Text('Center'),
+)
+```
+
+### Positioned
+Positioned 部件可以对它设置相对位置，让它位于屏幕的不同地方，不过它需要与 Stack 部件配合使用：
+
+```
+Positioned(
+    left: 100,
+    top: 100,
+    child: Container(
+        color: Colors.green,
+        height: 80,
+        width: 80,
+    ),
+)
+```
+
+### Column
+Column 是纵向布局部件，可以让你对多个部件进行纵向布局，在它内部的子部件会沿屏幕的纵向一个一个显示出来：
+
+```
+Column(
+    children: <Widget>[
+            Container(
+            color: Colors.red,
+            height: 100,
+            width: 100,
+        ),
+        Container(
+            color: Colors.blue,
+            height: 100,
+            width: 100,
+        ),
+        Container(
+            color: Colors.green,
+            height: 100,
+            width: 100,
+        ),
+    ],
+)
+```
+
+### Row
+Row 刚好和 Column 相反，可以让你对多个部件进行横向布局，在它内部的子部件会沿屏幕的横向一个一个显示出来：
+
+```
+Row(
+    children: <Widget>[
+            Container(
+            color: Colors.red,
+            height: 100,
+            width: 100,
+        ),
+        Container(
+            color: Colors.blue,
+            height: 100,
+            width: 100,
+        ),
+        Container(
+            color: Colors.green,
+            height: 100,
+            width: 100,
+        ),
+    ],
+)
+```
+
+### Stack
+Stack 堆叠布局，在 Stack 内部的子部件，会堆叠在一起，我们可以配合 Positioned 部件来设置堆叠于 Stack 内部的位置：
+
+```
+Stack(
+    children: <Widget>[
+        Container(
+            color: Colors.red,
+            height: 250,
+            width: 250,
+        ),
+        Container(
+            color: Colors.blue,
+            height: 150,
+            width: 150,
+        ),
+        Positioned(
+            left: 100,
+            top: 100,
+            child: Container(
+                color: Colors.green,
+                height: 80,
+                width: 80,
+            ),
+        )
+    ],
+)
+```
+
+### GridView
+GridView 珊格布局，它在 Web 的响应式设计中经常使用，他的好处在于，可以适应不同的屏幕：
+
+```
+GridView.count(
+    crossAxisCount: 2,
+    children: List.generate(20, (index) {
+        return Text(index.toString());
+    }),
+)
 ```
 
 ## 提醒弹出框部件（Dialogs and Alerts）
@@ -264,7 +414,7 @@ RaisedButton(
     onPressed: () {
         showBottomSheet(
             context: context,
-            builder: (context) {
+            builder: (context){
                 return Container(
                     width: MediaQuery.of(context).size.width,
                     child: Text('BottomSheet'),
@@ -275,4 +425,5 @@ RaisedButton(
 )
 ```
 
-## 交互模型（Interaction Models）
+## 总结
+Interaction Models、Animation and Motion、Painting and effects 这些都属于比较高级的部件，我们在未来文章中再介绍，
