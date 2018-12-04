@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,8 +41,19 @@ class _MyHomePageState extends State<MyHomePage> {
     if(resp.statusCode == HttpStatus.ok) {
       var json = await resp.transform(utf8.decoder).join();
       var data = jsonDecode(json);
+      
       print(data['places'][0]['fullName']);
     }
+  }
+
+  setData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('testKey', 'I am OK');
+  }
+
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.getString('testKey');
   }
 
   @override
@@ -56,9 +68,25 @@ class _MyHomePageState extends State<MyHomePage> {
             FlatButton(
               color: Colors.black,
               textColor: Colors.white,
-              child: Text('Get data'),
+              child: Text('Get HttpData'),
               onPressed: () { 
                 this.get();
+              },
+            ),
+            FlatButton(
+              color: Colors.black,
+              textColor: Colors.white,
+              child: Text('setData'),
+              onPressed: () { 
+                this.setData();
+              },
+            ),
+            FlatButton(
+              color: Colors.black,
+              textColor: Colors.white,
+              child: Text('getData'),
+              onPressed: () { 
+                this.getData();
               },
             ),
           ],
