@@ -49,11 +49,14 @@ class _MyHomePageState extends State<MyHomePage> {
   setData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('testKey', 'I am OK');
+    print('Set OK');
   }
 
   getData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.getString('testKey');
+    String content = prefs.getString('testKey');
+    
+    print(content);
   }
 
   @override
